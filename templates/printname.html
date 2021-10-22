@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Print your Name</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+
+<br>
+<h2>Print your Name</h2>
+<br>
+<form action='/name/getname' method="POST">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Print Your Name</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="pname" placeholder="Enter Your Name">
+    </div><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+
+<h3>{{pname}}</h3>
+
+{% endblock %}

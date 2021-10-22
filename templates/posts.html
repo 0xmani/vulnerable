@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>All Posts</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+
+{% with logmsg = get_flashed_messages() %}
+        {% if logmsg %}  
+            {% for message in logmsg %}  
+            <div class="alert alert-primary" role="alert"><p>{{ message }}</p></div>  
+            {% endfor %}  
+        {% endif %}  
+    {% endwith %}
+
+{% for posts in post %}
+    <h4>Title: {{ posts.title }}</h4>    
+    <p>Content: {{ posts.content }}</p>
+    <p><b>Author: {{ posts.author }}</b></p>
+    <p>Date: {{ posts.date_post }}</p>
+    <a class="btn btn-primary" href="/posts/edit/{{ posts.id }}">Edit</a> 
+    <a class="btn btn-danger" href="/posts/delete/{{ posts.id }}">Delete</a>
+    <hr>
+{% endfor %}
+{% endblock %}
